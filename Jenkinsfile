@@ -55,7 +55,7 @@ pipeline {
                         sh "git checkout -b $ghPagesBranch"
                     } else {
                         sh "git checkout $ghPagesBranch"
-                    }
+                    } 
 
                     // Stash the local changes
                     sh 'git stash'
