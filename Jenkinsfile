@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         nodejs 'node' // Specify the Node.js tool installation name
-        git 'Default'    // Specify the Git tool installation name (if needed)
+       
     }
 
     stages {
