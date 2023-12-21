@@ -40,33 +40,40 @@ pipeline {
         stage('Deploy to GitHub Pages') {
             steps {
                script {
-                    def ghPagesBranch = 'main'
-                    def githubUsername = 'ibrahimhersi3'
-                    def githubToken = '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'
+                        def ghPagesBranch = 'main'
+                        def githubUsername = 'ibrahimhersi3'
+                        def githubToken = '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'
 
-                    // Set the remote URL explicitly with the personal access token
-                    sh "git remote set-url origin https://${githubUsername}:${githubToken}@github.com/ibrahimhersi3/Devops_DockerJenskins.git"
+                        // Set the remote URL explicitly with the personal access token
+                        sh "git remote set-url origin https://${githubUsername}:${githubToken}@github.com/ibrahimhersi3/Devops_DockerJenskins.git"
 
-                    // Check if the 'main' branch already exists
-                    def branchExists = sh(script: 'git show-ref --quiet refs/heads/main', returnStatus: true) == 0
+                        // Check if the 'main' branch already exists
+                        def branchExists = sh(script: 'git show-ref --quiet refs/heads/main', returnStatus: true) == 0
 
-                    // If the 'main' branch does not exist, create it
-                    if (!branchExists) {
-                        sh "git checkout -b $ghPagesBranch"
-                    } else {
-                        sh "git checkout -f $ghPagesBranch"
-                    }
+                        // If the 'main' branch does not exist, create it
+                        if (!branchExists) {
+                            sh "git checkout -b $ghPagesBranch"
+                        } else {
+                            sh "git checkout -f $ghPagesBranch"
+                        }
 
-                    // Copy the built files to the appropriate location
-                    sh 'cp -r ci-cd-website/build/* .'
+                        // Copy the built files to the appropriate location
+                        sh 'cp -r ci-cd-website/build/* .'
 
-                    // Commit and push to GitHub Pages branch
-                    sh 'git add .'
-                    sh "git commit -m 'Deploy to GitHub Pages - Build #$BUILD_NUMBER'"
-                    sh "git push origin $ghPagesBranch"
+                        // Check for changes before committing
+                        def changes = sh(script: 'git status --porcelain', returnStdout: true).trim()
+                        
+                        if (changes) {
+                            // Commit and push to GitHub Pages branch
+                            sh 'git add .'
+                            sh "git commit -m 'Deploy to GitHub Pages - Build #$BUILD_NUMBER'"
+                            sh "git push origin $ghPagesBranch"
+                        } else {
+                            echo 'No changes to commit. Skipping deployment.'
+                        }
 
-                    // Switch back to the main branch
-                    sh 'git checkout main'
+                        // Switch back to the main branch
+                        sh 'git checkout main'
                 }
             }
         }
