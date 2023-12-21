@@ -39,7 +39,7 @@ pipeline {
 
         stage('Deploy to GitHub Pages') {
             steps {
-                script {
+               script {
                     def ghPagesBranch = 'main'
                     def githubUsername = 'ibrahimhersi3'
                     def githubToken = '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'
@@ -57,8 +57,8 @@ pipeline {
                         sh "git checkout $ghPagesBranch"
                     }
 
-                    // Stash the local changes
-                    sh 'git stash'
+                    // Discard local changes in package-lock.json and yarn.lock
+                    sh 'git checkout -- ci-cd-website/package-lock.json ci-cd-website/yarn.lock'
 
                     // Copy the built files to the appropriate location
                     sh 'cp -r ci-cd-website/build/* .'
@@ -68,9 +68,8 @@ pipeline {
                     sh "git commit -m 'Deploy to GitHub Pages - Build #$BUILD_NUMBER'"
                     sh "git push origin $ghPagesBranch"
 
-                    // Switch back to the main branch and apply stashed changes
+                    // Switch back to the main branch
                     sh 'git checkout main'
-                    sh 'git stash pop --index'
                 }
             }
         }
