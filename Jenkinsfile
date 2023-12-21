@@ -39,18 +39,25 @@ pipeline {
 
         stage('Deploy to GitHub Pages') {
             steps {
-                script {
+                        script {
                     def ghPagesBranch = 'main'
+                    
+                    // Check if the 'main' branch already exists
+                    def branchExists = sh(script: 'git show-ref --quiet refs/heads/main', returnStatus: true) == 0
 
-                    // Create and switch to a temporary branch
-                    sh "git checkout -b $ghPagesBranch"
+                    // If the 'main' branch does not exist, create it
+                    if (!branchExists) {
+                        sh "git checkout -b $ghPagesBranch"
+                    } else {
+                        sh "git checkout $ghPagesBranch"
+                    }
 
-                    // Copy the built files to the root directory (or adjust based on your build configuration)
+                    // Copy the built files to the appropriate location
                     sh 'cp -r ci-cd-website/build/* .'
 
                     // Commit and push to GitHub Pages branch
-                    sh "git add ."
-                    sh "git commit -m 'Deploy to GitHub Pages'"
+                    sh 'git add .'
+                    sh "git commit -m 'Deploy to GitHub Pages - Build #$BUILD_NUMBER'"
                     sh "git push origin $ghPagesBranch"
 
                     // Switch back to the main branch
