@@ -4,15 +4,15 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Checkout your source code from GitHub
                 checkout scm
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                // Install Node.js dependencies
                 script {
+                    // Use NodeJS tool to install dependencies
+                    tool 'NodeJS'
                     sh 'npm install'
                 }
             }
@@ -20,8 +20,9 @@ pipeline {
 
         stage('Build') {
             steps {
-                // Build your React app
                 script {
+                    // Use NodeJS tool to run the build
+                    tool 'NodeJS'
                     sh 'npm run build'
                 }
             }
@@ -29,9 +30,8 @@ pipeline {
 
         stage('Deploy to GitHub Pages') {
             steps {
-                // Deploy to GitHub Pages
                 script {
-                    def ghPagesBranch = 'main'
+                    def ghPagesBranch = 'main' // Adjust the branch name here
 
                     // Create and switch to a temporary branch
                     sh "git checkout -b $ghPagesBranch"
