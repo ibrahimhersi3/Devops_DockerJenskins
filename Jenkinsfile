@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs 'node' // Specify the Node.js tool installation name
+        git 'git'    // Specify the Git tool installation name (if needed)
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -11,8 +16,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
-                    // Use NodeJS tool to install dependencies
-                    tool 'NodeJS'
+                    // Use Node.js tool to install dependencies
                     sh 'npm install'
                 }
             }
@@ -21,8 +25,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    // Use NodeJS tool to run the build
-                    tool 'NodeJS'
+                    // Use Node.js tool to run the build
                     sh 'npm run build'
                 }
             }
