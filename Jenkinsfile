@@ -2,13 +2,14 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'node' // Specify the Node.js tool installation name
-       
+        nodejs 'node'
+        git 'git'
     }
 
     stages {
         stage('Checkout') {
             steps {
+                // Checking out the repository
                 checkout scm
             }
         }
@@ -16,8 +17,11 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
-                    // Use Node.js tool to install dependencies
-                    sh 'npm install'
+                    // Move to the directory where package.json is located
+                    dir('ci-cd-website') {
+                        // Use Node.js tool to install dependencies
+                        sh 'npm install'
+                    }
                 }
             }
         }
@@ -25,8 +29,11 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    // Use Node.js tool to run the build
-                    sh 'npm run build'
+                    // Move to the directory where npm run build is executed
+                    dir('ci-cd-website') {
+                        // Use Node.js tool to run the build
+                        sh 'npm run build'
+                    }
                 }
             }
         }
@@ -34,13 +41,13 @@ pipeline {
         stage('Deploy to GitHub Pages') {
             steps {
                 script {
-                    def ghPagesBranch = 'main' // Adjust the branch name here
+                    def ghPagesBranch = 'main'
 
                     // Create and switch to a temporary branch
                     sh "git checkout -b $ghPagesBranch"
 
                     // Copy the built files to the root directory (or adjust based on your build configuration)
-                    sh 'cp -r build/* .'
+                    sh 'cp -r ci-cd-website/build/* .'
 
                     // Commit and push to GitHub Pages branch
                     sh "git add ."
