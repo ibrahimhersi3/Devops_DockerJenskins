@@ -54,11 +54,8 @@ pipeline {
                     if (!branchExists) {
                         sh "git checkout -b $ghPagesBranch"
                     } else {
-                        sh "git checkout $ghPagesBranch"
+                        sh "git checkout -f $ghPagesBranch"
                     }
-
-                    // Discard local changes in package-lock.json and yarn.lock
-                    sh 'git checkout -- ci-cd-website/package-lock.json ci-cd-website/yarn.lock'
 
                     // Copy the built files to the appropriate location
                     sh 'cp -r ci-cd-website/build/* .'
