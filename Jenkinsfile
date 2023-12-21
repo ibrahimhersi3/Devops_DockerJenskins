@@ -57,6 +57,9 @@ pipeline {
                         sh "git checkout $ghPagesBranch"
                     }
 
+                    // Stash the local changes
+                    sh 'git stash'
+
                     // Copy the built files to the appropriate location
                     sh 'cp -r ci-cd-website/build/* .'
 
@@ -65,8 +68,9 @@ pipeline {
                     sh "git commit -m 'Deploy to GitHub Pages - Build #$BUILD_NUMBER'"
                     sh "git push origin $ghPagesBranch"
 
-                    // Switch back to the main branch
+                    // Switch back to the main branch and apply stashed changes
                     sh 'git checkout main'
+                    sh 'git stash apply'
                 }
             }
         }
