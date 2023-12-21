@@ -70,7 +70,7 @@ pipeline {
 
                     // Switch back to the main branch and apply stashed changes
                     sh 'git checkout main'
-                    sh 'git stash apply --index'
+                    sh 'git stash pop --index'
                 }
             }
         }
