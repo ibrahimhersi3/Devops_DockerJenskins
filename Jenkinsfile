@@ -39,9 +39,14 @@ pipeline {
 
         stage('Deploy to GitHub Pages') {
             steps {
-                        script {
+                script {
                     def ghPagesBranch = 'main'
-                    
+                    def githubUsername = 'ibrahimhersi3'
+                    def githubToken = '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'
+
+                    // Set the remote URL explicitly with the personal access token
+                    sh "git remote set-url origin https://${githubUsername}:${githubToken}@github.com/ibrahimhersi3/Devops_DockerJenskins.git"
+
                     // Check if the 'main' branch already exists
                     def branchExists = sh(script: 'git show-ref --quiet refs/heads/main', returnStatus: true) == 0
 
