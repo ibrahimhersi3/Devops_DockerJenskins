@@ -55,7 +55,7 @@ pipeline {
                         sh "git checkout -b $ghPagesBranch"
                     } else {
                         sh "git checkout $ghPagesBranch"
-                    } 
+                    }
 
                     // Stash the local changes
                     sh 'git stash'
@@ -70,7 +70,7 @@ pipeline {
 
                     // Switch back to the main branch and apply stashed changes
                     sh 'git checkout main'
-                    sh 'git stash apply'
+                    sh 'git stash apply --index'
                 }
             }
         }
