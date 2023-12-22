@@ -70,7 +70,7 @@ pipeline {
                             sh "git push origin $ghPagesBranch"
                         } else {
                             echo 'No changes to commit. Skipping deployment.'
-                        }
+                        } 
 
                         // Switch back to the main branch
                         sh 'git checkout main'
