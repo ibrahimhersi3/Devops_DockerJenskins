@@ -42,11 +42,12 @@ pipeline {
                             // Run npm install
                             sh 'npm install'
 
-                            // Run the build again
+                            // Run the build
                             sh 'npm run build'
 
-                            // Copy the built files to the root
-                            sh 'cp -r build/* ${JENKINS_HOME}/workspace/${JOB_NAME}/'
+                            // Copy the built files and package.json to the root
+                            sh 'cp -r build ${JENKINS_HOME}/workspace/${JOB_NAME}/'
+                            sh 'cp package.json ${JENKINS_HOME}/workspace/${JOB_NAME}/'
 
                             // Check for changes before committing
                             def changes = sh(script: 'git status --porcelain', returnStdout: true).trim()
