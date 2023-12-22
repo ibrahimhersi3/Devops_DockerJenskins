@@ -1,6 +1,35 @@
-stage('Deploy to GitHub Pages') {
-    steps {
-        script {
+pipeline {
+    agent any
+
+    tools {
+        nodejs 'node'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                dir('ci-cd-website') {
+                    sh 'npm install'
+                }
+            }
+        }
+
+        stage('Build') {
+            steps {
+                dir('ci-cd-website') {
+                    sh 'npm run build'
+                }
+            }
+        }
+
+        stage('Deploy to GitHub Pages') {
+            script {
             def ghPagesBranch = 'main'
 
             // Clean the branch (remove existing files)
@@ -29,6 +58,15 @@ stage('Deploy to GitHub Pages') {
                     echo 'No changes to commit. Skipping deployment.'
                 }
             }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build successful! Deployed to GitHub Pages.'
+        }
+        failure {
+            echo 'Build failed! Please check the build logs.'
         }
     }
 }
