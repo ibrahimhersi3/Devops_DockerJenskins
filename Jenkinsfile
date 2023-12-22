@@ -1,63 +1,34 @@
-pipeline {
-    agent any
+stage('Deploy to GitHub Pages') {
+    steps {
+        script {
+            def ghPagesBranch = 'main'
 
-    tools {
-        nodejs 'node'
-    }
+            // Clean the branch (remove existing files)
+            sh 'git rm -rf .'
+            sh 'git clean -xffd'
 
-    stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
+            // Ensure the build directory exists
+            dir('ci-cd-website') {
+                // Run the build again (just to be sure)
+                sh 'npm run build'
 
-        stage('Install Dependencies') {
-            steps {
-                dir('ci-cd-website') {
-                    sh 'npm install'
-                }
-            }
-        }
+                // Copy the built files to the root
+                sh 'cp -r build/* ${JENKINS_HOME}/workspace/${JOB_NAME}/'
 
-        stage('Build') {
-            steps {
-                dir('ci-cd-website') {
-                    sh 'npm run build'
-                }
-            }
-        }
+                // Check for changes before committing
+                def changes = sh(script: 'git status --porcelain', returnStdout: true).trim()
 
-        stage('Deploy to GitHub Pages') {
-            steps {
-                script {
-                    // Set the branch used for GitHub Pages deployment
-                    def ghPagesBranch = 'main'
-
-                    // Clean the branch (remove existing files)
-                    sh 'git rm -rf .'
-                    sh 'git clean -xffd'
-
-                    // Copy the built files to the root
-                    sh 'cp -r ci-cd-website/build/* .'
-
+                if (changes) {
                     // Commit and push to GitHub Pages branch
                     sh 'git add .'
                     sh "git commit -m 'Deploy to GitHub Pages - Build #$BUILD_NUMBER'"
                     sh "git push origin ${ghPagesBranch}"
 
                     echo "Deployed to GitHub Pages branch: ${ghPagesBranch}"
+                } else {
+                    echo 'No changes to commit. Skipping deployment.'
                 }
             }
-        }
-    }
-
-    post {
-        success {
-            echo 'Build successful! Deployed to GitHub Pages.'
-        }
-        failure {
-            echo 'Build failed! Please check the build logs.'
         }
     }
 }
