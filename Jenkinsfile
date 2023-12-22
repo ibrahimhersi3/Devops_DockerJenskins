@@ -15,7 +15,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 dir('ci-cd-website') {
-                    sh 'npm install'
+                    sh 'npm install' 
                 }
             }
         }
