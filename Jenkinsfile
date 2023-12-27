@@ -24,6 +24,7 @@ pipeline {
         stage('Deploy to Netlify') {
             steps {
                 script {
+                    sh 'npm install -g netlify-cli'
                     sh 'npx netlify deploy --site startling-hummingbird-ec3a44 --prod --dir ci-cd-website/build --auth nfp_NYRrYh6cu8J9eFeNfJ32dXvLtedBMLBJ08cb'
                 }
             }
