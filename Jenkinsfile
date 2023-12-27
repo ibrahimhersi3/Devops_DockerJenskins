@@ -1,16 +1,11 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Install Netlify CLI') {
-            steps {
-                script {
-                    // Install Netlify CLI globally
-                    sh 'npm install -g netlify-cli'
-                }
-            }
-        }
+    tools {
+        nodejs 'node'
+    }
 
+    stages {
         stage('Checkout') {
             steps {
                 checkout scm
@@ -33,10 +28,23 @@ pipeline {
             }
         }
 
+        stage('Install Netlify CLI') {
+            steps {
+                script {
+                    // Ensure that the correct version of NodeJS is in the PATH
+                    def nodejsHome = tool 'node'
+                    env.PATH = "${nodejsHome}/bin:${env.PATH}"
+
+                    // Install Netlify CLI
+                    sh 'npm install -g netlify-cli'
+                }
+            }
+        }
+
         stage('Deploy to Netlify') {
             steps {
                 script {
-                    // Use the Netlify CLI to deploy
+                    // Deploy to Netlify using the Netlify CLI
                     sh 'npx netlify deploy --site startling-hummingbird-ec3a44 --prod --dir ci-cd-website/build --auth nfp_NYRrYh6cu8J9eFeNfJ32dXvLtedBMLBJ08cb'
                 }
             }
@@ -45,10 +53,10 @@ pipeline {
 
     post {
         success {
-            echo 'Build and deployment successful!'
+            echo 'Build successful! Deployed to Netlify Pages.'
         }
         failure {
-            echo 'Build and deployment failed. Please check the logs for details.'
+            echo 'Build failed! Please check the build logs.'
         }
     }
 }
