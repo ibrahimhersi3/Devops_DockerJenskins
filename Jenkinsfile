@@ -5,11 +5,6 @@ pipeline {
         nodejs 'node'
     }
 
-    environment {
-        NETLIFY_AUTH_TOKEN = 'nfp_NYRrYh6cu8J9eFeNfJ32dXvLtedBMLBJ08cb'
-        NETLIFY_SITE_ID = 'startling-hummingbird-ec3a44'
-    }
-
     stages {
         stage('Checkout') {
             steps {
@@ -17,17 +12,10 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Install Dependencies and Build') {
             steps {
                 dir('ci-cd-website') {
                     sh 'npm install'
-                }
-            }
-        }
-
-        stage('Build') {
-            steps {
-                dir('ci-cd-website') {
                     sh 'npm run build'
                 }
             }
@@ -36,8 +24,7 @@ pipeline {
         stage('Deploy to Netlify') {
             steps {
                 script {
-                    // Deploy to Netlify using Netlify CLI
-                    sh "npx netlify deploy --site ${NETLIFY_SITE_ID} --prod --dir build --auth ${NETLIFY_AUTH_TOKEN}"
+                    sh 'npx netlify deploy --site startling-hummingbird-ec3a44 --prod --dir ci-cd-website/build --auth nfp_NYRrYh6cu8J9eFeNfJ32dXvLtedBMLBJ08cb'
                 }
             }
         }
