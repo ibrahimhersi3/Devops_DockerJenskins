@@ -1,5 +1,10 @@
+/* src/app.css or src/styles.css */
 .App {
   text-align: center;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
 }
 
 .App-logo {
@@ -14,7 +19,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #007aff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,7 +27,10 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding: 1rem;
 }
+
+/* Add iOS theme styles here */
 
 .App-link {
   color: #61dafb;
