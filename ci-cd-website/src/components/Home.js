@@ -12,9 +12,7 @@ const Home = () => {
 
           <h3>Summary Statement</h3>
           <p>
-            Computer Science master's grad with 2 years of experience in application support, programming in C#,
-            and database management systems. Eager to transition to a software developer role, bringing strong
-            troubleshooting skills and a solid software development foundation.
+          Computer Science master's graduate with 2 years of experience, actively pursuing opportunities in DevOps and Cloud Engineering. Specialized in Jenkins Pipeline Integration and Docker containerized Jenkins with GitHub, facilitating seamless deployments to platforms like Netlify. Demonstrated expertise is showcased through this portfolio website, providing an in-depth exploration of efficient CI/CD processes. For more details, refer to the above tab labeled "CI/CD Pipeline."
           </p>
 
           {/* Work Experience */}
@@ -42,7 +40,7 @@ const Home = () => {
               <strong>Internship</strong> <br />
               qopla, Stockholm, Sweden <br />
               December 2019 - June 2020 <br />
-              ● Estimating delivery times using Python and machine learning algorithms...
+              ● Estimating delivery times using Python and machine learning algorithms.
             </li>  <br />
 
             {/* Master's Thesis */}
@@ -51,7 +49,7 @@ const Home = () => {
               Uppsala University, Uppsala, Sweden <br />
               January 2019 - June 2019 <br />
               ● Master's thesis involved developing a machine-learning model to predict future water demand in Uppsala city.
-              Implemented result visualization through an interactive map using Python, OpenStreetMap, Tensorflow, and Spyder...
+              Implemented result visualization through an interactive map using Python, OpenStreetMap, Tensorflow, and Spyder.
             </li>  <br />
 
             {/* Collaborative Fenceless Robotics */}
@@ -60,7 +58,7 @@ const Home = () => {
               Ericsson, Stockholm, Sweden <br />
               September 2018 - January 2019 <br />
               ● Collaborated with Ericsson on a Reinforcement Learning project, training a robot, TurtleBot2, to autonomously navigate
-              and perform tasks...
+              and perform tasks.
             </li>
           </ul>
 
