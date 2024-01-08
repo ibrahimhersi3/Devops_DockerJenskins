@@ -31,7 +31,7 @@ pipeline {
         stage('Install Netlify CLI') {
             steps {
                 script {
-                    // Ensure that the correct version of NodeJS is in the PATH
+                    // Ensure thatt the correct version of NodeJS is in the PATH
                     def nodejsHome = tool 'node'
                     env.PATH = "${nodejsHome}/bin:${env.PATH}"
 
