@@ -42,7 +42,7 @@ const Home = () => {
               December 2019 - June 2020 <br />
               ● Estimating delivery times using Python and machine learning algorithms.
             </li>  <br />
-
+              
             {/* Master's Thesis */}
             <li>
               <strong>Visualization & Prediction Tool for Urban Water Demand - Master Thesis</strong> <br />
@@ -68,12 +68,10 @@ const Home = () => {
             <strong>Master's Degree in Computer Science</strong> <br />
             Uppsala University <br />
             2017 - 2019
-          </p>
-
+          </p> 
+            
           <p>
-            <strong>Bachelor's Degree in Software Engineering</strong> <br />
-            Infrastructure University of Kuala Lumpur <br />
-            2013 - 2016
+            
           </p>
 
           {/* Skills */}
