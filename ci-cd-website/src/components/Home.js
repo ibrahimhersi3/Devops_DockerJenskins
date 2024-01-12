@@ -71,7 +71,9 @@ const Home = () => {
           </p> 
             
           <p>
-            
+            <strong>Bachelor's Degree in Software Engineering</strong> <br />
+            Infrastructure University of Kuala Lumpur <br />
+            2013 - 2016
           </p>
 
           {/* Skills */}
