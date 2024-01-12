@@ -23,7 +23,7 @@ const Home = () => {
             <li>
               <strong>Application Engineer</strong> <br />
                           Inriver, Stockholm, Sweden <br />
-                          March 2021 – Present <br />
+                          March 2022 – Present <br />
             ● Proficient in using .NET Framework and C# for debugging, particularly within the context of debugging inriver
             applications. Skilled in dissecting customer extension code, adapting it to my environment, and reproducing issues for
             precise troubleshooting using inriver Remoting API.<br />
