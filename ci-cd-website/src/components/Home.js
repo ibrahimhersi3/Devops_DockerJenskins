@@ -21,7 +21,7 @@ const Home = () => {
           <ul>
             {/* Inriver */}
             <li>
-              <strong>Inriver</strong> <br />
+              <strong>Application Engineer</strong> <br />
                           Inriver, Stockholm, Sweden <br />
                           March 2021 – Present <br />
             ● Proficient in using .NET Framework and C# for debugging, particularly within the context of debugging inriver
