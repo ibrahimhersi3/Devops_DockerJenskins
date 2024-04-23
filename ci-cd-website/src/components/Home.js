@@ -12,8 +12,7 @@ const Home = () => {
 
           <h3>Summary Statement</h3>
           <p>
-          Computer Science master's graduate with 2 years of experience, actively pursuing opportunities in DevOps and Cloud Engineering. Specialized in Jenkins Pipeline Integration and Docker containerized Jenkins with GitHub, facilitating seamless deployments to platforms like Netlify. Demonstrated expertise is showcased through this portfolio website, providing an in-depth exploration of efficient CI/CD processes. For more details, refer to the above tab labeled "CI/CD Pipeline."
-          </p>
+          I'm currently focused on advancing my career in IT operations, DevOps, and Cloud. This project ivolves it integrating Jenkins Pipelines and setting up Dockerized Jenkins environments connected to GitHub. These setups have been crucial in ensuring smooth deployments to platforms like Netlify. I've demonstrated my skills through practical projects, showcased on my portfolio website, where I discuss creating efficient CI/CD processes. For more details, please explore the "CI/CD Pipeline" section above.          </p>
 
           {/* Work Experience */}
           <h3>Work Experience</h3>
@@ -21,18 +20,16 @@ const Home = () => {
           <ul>
             {/* Inriver */}
             <li>
-              <strong>Application Engineer</strong> <br />
+              <strong>Application Support Engineer</strong> <br />
                           Inriver, Stockholm, Sweden <br />
                           March 2022 – Present <br />
-            ● Proficient in using .NET Framework and C# for debugging, particularly within the context of debugging inriver
-            applications. Skilled in dissecting customer extension code, adapting it to my environment, and reproducing issues for
-            precise troubleshooting using inriver Remoting API.<br />
-            ● Robust skill set in querying and analyzing data in MSSQL. Proficient in creating scripts for extracting and evaluating
-            specific data subsets, ensuring precise insights into database performance and resolving discrepancies. <br />
-            ● Experienced in assessing REST API performance through Postman. Proficient in creating and conducting performance
-            tests to guarantee optimal system responsiveness. <br />
-            ● Able to use Grafana for monitoring databases, cloud services, application servers, and extensions, ensuring optimal
-            performance, availability, and health of systems and applications.
+            ● Debugged inriver applications involved analyzing customer extension code, adapting it to testing environments, and pinpointing issues using the inriver Remoting API.<br />
+            ● Identified and resolved system bugs, created dedicated branches, pull requests, and merged them into the main codebase for deployment, all while ensuring a smooth process within our CI/CD pipeline. <br />
+            ● Conducted performance tests on REST APIs, measuring various metrics such as response times, latency, and error rates to evaluate the overall performance of the API. I used performance testing tools like Postman. <br />
+            ● Used Grafana for monitoring databases, cloud services, application servers, and extensions, ensuring optimal performance, availability, and health of systems and applications. <br />
+            ● facilitated customer migrations from their on-premises databases to our inriver IPMC cloud, transferring data directly on to the Microsoft Azure cloud infrastructure. <br />
+            ● Queried and analyzed data in MSSQL to extract necessary information, and ensured consistency between application data and the database. <br />
+            ● Created technical documentation, processes, and procedures to facilitate knowledge sharing and ensure compliance with  application requirements
                         </li><br />
 
             {/* Internship */}
