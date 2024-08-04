@@ -20,7 +20,7 @@ const Home = () => {
           <ul>
             {/* Inriver */}
             <li>
-              <strong>Application Support Engineer</strong> <br />
+              <strong>Application Engineer</strong> <br />
                           Inriver, Stockholm, Sweden <br />
                           March 2022 – Present <br />
             ● Debugged inriver applications involved analyzing customer extension code, adapting it to testing environments, and pinpointing issues using the inriver Remoting API.<br />
