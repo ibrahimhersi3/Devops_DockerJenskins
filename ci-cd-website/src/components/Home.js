@@ -3,22 +3,23 @@ import React from 'react';
 
 const Home = () => {
   return (
+
+    /*
     <section id="home">
       <div className="cv-container">
-        {/* CV section */}
+       
         <div id="cv" className="cv-item">
           <h3>Ibrahim Hersi</h3>
           <p>Ibrahim.hersi.2@gmail.com • +46 72-233 25 22</p>
-
           <h3>Summary Statement</h3>
           <p>
           I'm currently focused on advancing my career in IT operations, DevOps, and Cloud. This project ivolves it integrating Jenkins Pipelines and setting up Dockerized Jenkins environments connected to GitHub. These setups have been crucial in ensuring smooth deployments to platforms like Netlify. I've demonstrated my skills through practical projects, showcased on my portfolio website, where I discuss creating efficient CI/CD processes. For more details, please explore the "CI/CD Pipeline" section above.          </p>
 
-          {/* Work Experience */}
+          
           <h3>Work Experience</h3>
           
           <ul>
-            {/* Inriver */}
+           
             <li>
               <strong>Application Engineer</strong> <br />
                           Inriver, Stockholm, Sweden <br />
@@ -32,7 +33,7 @@ const Home = () => {
             ● Created technical documentation, processes, and procedures to facilitate knowledge sharing and ensure compliance with  application requirements
                         </li><br />
 
-            {/* Internship */}
+           
             <li>
               <strong>Internship</strong> <br />
               qopla, Stockholm, Sweden <br />
@@ -40,7 +41,7 @@ const Home = () => {
               ● Estimating delivery times using Python and machine learning algorithms.
             </li>  <br />
               
-            {/* Master's Thesis */}
+            
             <li>
               <strong>Visualization & Prediction Tool for Urban Water Demand - Master Thesis</strong> <br />
               Uppsala University, Uppsala, Sweden <br />
@@ -49,7 +50,7 @@ const Home = () => {
               Implemented result visualization through an interactive map using Python, OpenStreetMap, Tensorflow, and Spyder.
             </li>  <br />
 
-            {/* Collaborative Fenceless Robotics */}
+            
             <li>
               <strong>Collaborative Fenceless Robotics - Internship</strong> <br />
               Ericsson, Stockholm, Sweden <br />
@@ -59,7 +60,7 @@ const Home = () => {
             </li>
           </ul>
 
-          {/* Education */}
+          
           <h3>Education</h3>
           <p>
             <strong>Master's Degree in Computer Science</strong> <br />
@@ -73,7 +74,7 @@ const Home = () => {
             2013 - 2016
           </p>
 
-          {/* Skills */}
+          
           <h3>Skills</h3>
           <p>
             <strong>Programming:</strong> C# .Net, Python, Javascript, HTML, CSS <br />
@@ -82,6 +83,7 @@ const Home = () => {
         </div>
       </div>
     </section>
+    */
   );
 };
 
